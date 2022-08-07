@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@beverages/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@beverages/core-data": ["libs/core-data/src/index.ts"],
+      "@beverages/core-state": ["libs/core-state/src/index.ts"],
+      "@beverages/environment": ["libs/environment/src/index.ts"],
+      "@beverages/material": ["libs/material/src/index.ts"],
+      "@beverages/ui-login": ["libs/ui-login/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

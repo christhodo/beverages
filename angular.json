@@ -2,7 +2,13 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "api-interfaces": "libs/api-interfaces",
     "beverages": "apps/beverages",
-    "beverages-e2e": "apps/beverages-e2e"
+    "beverages-e2e": "apps/beverages-e2e",
+    "core-data": "libs/core-data",
+    "core-state": "libs/core-state",
+    "environment": "libs/environment",
+    "material": "libs/material",
+    "ui-login": "libs/ui-login"
   }
 }

@@ -1,0 +1,24 @@
+{
+  "beverages": [
+    {
+      "id": 1,
+      "title": "Iced Brown Sugar Oatmilk Shaken Espresso",
+      "size": "Venti",
+      "espresso": "Blonde",
+      "shots": 4,
+      "syrup": "Brown Sugar",
+      "pumps": 6,
+      "iced": true
+    },
+    {
+      "id": 2,
+      "title": "Cappucino",
+      "size": "Venti",
+      "espresso": "Signature",
+      "shots": 3,
+      "syrup": "NA",
+      "pumps": 0,
+      "iced": false
+    }
+  ]
+}
