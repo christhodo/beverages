@@ -1,1 +1,17 @@
-<p>beverages works!</p>
+<div class="container">
+  <div class="col-50" layout="row" layout-align="center center">
+    <beverages-beverages-list
+      [beverages]="allBeverages$ | async"
+      (selected)="selectBeverage($event)"
+      (deleted)="deleteBeverage($event)"
+    ></beverages-beverages-list>
+  </div>
+  <div class="col-50" layout="row" layout-align="center center">
+    <beverages-beverage-details
+      [beverage]="selectedBeverage$ | async"
+      (saved)="saveBeverage($event)"
+      (cancelled)="resetBeverage()"
+      [form]="form"
+    ></beverages-beverage-details>
+  </div>
+</div>

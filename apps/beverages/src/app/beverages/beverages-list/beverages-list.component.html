@@ -1,1 +1,31 @@
-<p>beverages-list works!</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Beverage Creations</h1>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        *ngFor="let beverage of beverages"
+        data-test="beverage-list-item"
+        (click)="selected.emit(beverage)"
+      >
+        <h3 matLine>{{ beverage.title }}</h3>
+        <p matLine>Size: {{ beverage.size }}</p>
+        <p matLine>Type of Espresso: {{ beverage.espresso }}</p>
+        <p matLine>Number of shots: {{ beverage.shots }}</p>
+        <p matLine>Type of Syrup: {{ beverage.syrup }}</p>
+        <p matLine>Number of syrup pumps: {{ beverage.pumps }}</p>
+        <p matLine>Iced: {{ beverage.iced }}</p>
+
+        <button
+          mat-icon-button
+          (click)="deleted.emit(beverage); $event.stopImmediatePropagation()"
+        >
+          <mat-icon *ngIf="!readonly">delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
