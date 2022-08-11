@@ -14,7 +14,7 @@ export class BeverageEffects {
       fetch({
         run: (action) =>
           this.beveragesService
-            .find(action.beverageId)
+            .getOne(action.beverageId)
             .pipe(
               map((beverage: Beverage) =>
                 BeverageActions.loadBeverageSuccess({ beverage })
