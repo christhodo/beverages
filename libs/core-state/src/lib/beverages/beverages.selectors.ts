@@ -1,91 +1,44 @@
-import { createAction, props } from '@ngrx/store';
-import { Beverage } from '@beverages/api-interfaces';
+import { emptyBeverage } from '@beverages/api-interfaces';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import {
+  beverageAdapter,
+  BeverageState,
+  BEVERAGE_FEATURE_KEY,
+} from './beverages.reducer';
 
-// Select Entity
+export const getBeverageState =
+  createFeatureSelector<BeverageState>(BEVERAGE_FEATURE_KEY);
 
-export const selectBeverage = createAction(
-  '[BEVERAGE] Select Beverage',
-  props<{ beverageId: string }>()
+const { selectAll, selectEntities } = beverageAdapter.getSelectors();
+
+export const getBeveragesLoaded = createSelector(
+  getBeverageState,
+  (state: BeverageState) => state.loaded
 );
 
-// Load all Entities
-
-export const loadBeverages = createAction('[BEVERAGE] Load Beverages');
-
-export const loadBeveragesSuccess = createAction(
-  '[BEVERAGE] Load Beverages Success',
-  props<{ beverages: Beverage[] }>()
+export const getBeverageError = createSelector(
+  getBeverageState,
+  (state: BeverageState) => state.error
 );
 
-export const loadBeveragesFailed = createAction(
-  '[BEVERAGE] Load Beverages Failed',
-  props<{ error: any }>()
+export const getAllBeverages = createSelector(
+  getBeverageState,
+  (state: BeverageState) => selectAll(state)
 );
 
-// Load Single Entity
-
-export const loadBeverage = createAction(
-  '[BEVERAGE] Load Beverage',
-  props<{ beverageId: string }>()
+export const getBeverageEntities = createSelector(
+  getBeverageState,
+  (state: BeverageState) => selectEntities(state)
 );
 
-export const loadBeverageSuccess = createAction(
-  '[BEVERAGE] Load Beverage Success',
-  props<{ beverage: Beverage }>()
+export const getSelectedBeverageId = createSelector(
+  getBeverageState,
+  (state: BeverageState) => state.selectedId
 );
 
-export const loadBeverageFailed = createAction(
-  '[BEVERAGE] Load Beverage Failed',
-  props<{ error: any }>()
-);
-
-// Load Create Entity
-
-export const createBeverage = createAction(
-  '[BEVERAGE] Create Beverage',
-  props<{ beverage: Beverage }>()
-);
-
-export const createBeverageSuccess = createAction(
-  '[BEVERAGE] Create Beverage Success',
-  props<{ beverage: Beverage }>()
-);
-
-export const createBeverageFailed = createAction(
-  '[BEVERAGE] Create Beverage Failed',
-  props<{ error: any }>()
-);
-
-// Load Update Entity
-
-export const updateBeverage = createAction(
-  '[BEVERAGE] Update Beverage',
-  props<{ beverage: Beverage }>()
-);
-
-export const updateBeverageSuccess = createAction(
-  '[BEVERAGE] Update Beverage Success',
-  props<{ beverage: Beverage }>()
-);
-
-export const updateBeverageFailed = createAction(
-  '[BEVERAGE] Create Beverage Failed',
-  props<{ error: any }>()
-);
-
-// Load Delete Entity
-
-export const deleteBeverage = createAction(
-  '[BEVERAGE] Delete Beverage',
-  props<{ beverage: Beverage }>()
-);
-
-export const deleteBeverageSuccess = createAction(
-  '[BEVERAGE] Delete Beverage Success',
-  props<{ beverage: Beverage }>()
-);
-
-export const deleteBeverageFailed = createAction(
-  '[BEVERAGE] Create Beverage Failed',
-  props<{ error: any }>()
+export const getSelectedBeverage = createSelector(
+  getBeverageEntities,
+  getSelectedBeverageId,
+  (entities, selectedId) =>
+    (selectedId && entities[selectedId]) || emptyBeverage
 );

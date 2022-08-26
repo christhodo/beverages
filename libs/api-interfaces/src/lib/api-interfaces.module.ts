@@ -1,5 +1,5 @@
 export interface Beverage {
-  id: number;
+  id: string;
   title: string;
   size: string;
   espresso: string;
@@ -10,7 +10,7 @@ export interface Beverage {
 }
 
 export const emptyBeverage = {
-  id: 0,
+  id: '',
   title: '',
   size: '',
   espresso: '',
