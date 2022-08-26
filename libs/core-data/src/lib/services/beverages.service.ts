@@ -21,7 +21,7 @@ export class BeveragesService {
     return this.httpClient.get<Beverage[]>(this.getUrl());
   }
 
-  find(beverageId: string) {
+  getOne(beverageId: string) {
     return this.httpClient.get<Beverage>(this.getUrlById(beverageId));
   }
 

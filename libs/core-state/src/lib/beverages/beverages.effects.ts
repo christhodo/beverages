@@ -14,13 +14,13 @@ export class BeverageEffects {
       fetch({
         run: (action) =>
           this.beveragesService
-            .find(action.beverageId)
+            .getOne(action.beverageId)
             .pipe(
               map((beverage: Beverage) =>
                 BeverageActions.loadBeverageSuccess({ beverage })
               )
             ),
-        onError: (action, error) =>
+        onError: (_action, error) =>
           BeverageActions.loadBeverageFailed({ error }),
       })
     )
@@ -37,7 +37,7 @@ export class BeverageEffects {
                 BeverageActions.loadBeveragesSuccess({ beverages })
               )
             ),
-        onError: (action, error) =>
+        onError: (_action, error) =>
           BeverageActions.loadBeveragesFailed({ error }),
       })
     )
@@ -54,7 +54,7 @@ export class BeverageEffects {
                 BeverageActions.createBeverageSuccess({ beverage })
               )
             ),
-        onError: (action, error) =>
+        onError: (_action, error) =>
           BeverageActions.createBeverageFailed({ error }),
       })
     )
@@ -72,7 +72,7 @@ export class BeverageEffects {
                 BeverageActions.updateBeverageSuccess({ beverage })
               )
             ),
-        onError: (action, error) =>
+        onError: (_action, error) =>
           BeverageActions.updateBeverageFailed({ error }),
       })
     )
@@ -83,16 +83,14 @@ export class BeverageEffects {
       ofType(BeverageActions.deleteBeverage),
       pessimisticUpdate({
         run: (action) =>
-          this.beveragesService
-            .delete(action.beverage)
-            .pipe(
-              map(() =>
-                BeverageActions.deleteBeverageSuccess({
-                  beverage: action.beverage,
-                })
-              )
-            ),
-        onError: (action, error) =>
+          this.beveragesService.delete(action.beverage).pipe(
+            map(() =>
+              BeverageActions.deleteBeverageSuccess({
+                beverage: action.beverage,
+              })
+            )
+          ),
+        onError: (_action, error) =>
           BeverageActions.deleteBeverageFailed({ error }),
       })
     )
