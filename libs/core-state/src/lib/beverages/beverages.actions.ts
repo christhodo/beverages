@@ -19,7 +19,7 @@ export const loadBeveragesSuccess = createAction(
 
 export const loadBeveragesFailed = createAction(
   '[BEVERAGE] Load Beverages Failed',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 // Load Single Entity
@@ -36,7 +36,7 @@ export const loadBeverageSuccess = createAction(
 
 export const loadBeverageFailed = createAction(
   '[BEVERAGE] Load Beverage Failed',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 // Load Create Entity
@@ -53,7 +53,7 @@ export const createBeverageSuccess = createAction(
 
 export const createBeverageFailed = createAction(
   '[BEVERAGE] Create Beverage Failed',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 // Load Update Entity
@@ -70,7 +70,7 @@ export const updateBeverageSuccess = createAction(
 
 export const updateBeverageFailed = createAction(
   '[BEVERAGE] Create Beverage Failed',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
 
 // Load Delete Entity
@@ -87,5 +87,5 @@ export const deleteBeverageSuccess = createAction(
 
 export const deleteBeverageFailed = createAction(
   '[BEVERAGE] Create Beverage Failed',
-  props<{ error: any }>()
+  props<{ error: unknown }>()
 );
